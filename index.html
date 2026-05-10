@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing Card Component</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .pricing-container {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pricing-card {
+      width: 300px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #1f2937;
+    }
+
+    .price {
+      font-size: 28px;
+      font-weight: bold;
+      color: #16a34a;
+      margin-bottom: 20px;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .features li {
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+      color: #4b5563;
+    }
+
+    .features li:last-child {
+      border-bottom: none;
+    }
+
+    .btn {
+      width: 100%;
+      background-color: #2563eb;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
+      transform: scale(1.03);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    @media (max-width: 700px) {
+      .pricing-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="pricing-container" id="pricingContainer"></div>
+
+  <script>
+    function Card(title, price, features) {
+      const card = document.createElement("div");
+      card.className = "pricing-card";
+
+      const featuresList = features
+        .map(function(feature) {
+          return `<li>${feature}</li>`;
+        })
+        .join("");
+
+      card.innerHTML = `
+        <h2 class="title">${title}</h2>
+        <p class="price">${price}</p>
+
+        <ul class="features">
+          ${featuresList}
+        </ul>
+
+        <button class="btn">Start Trial</button>
+      `;
+
+      const button = card.querySelector(".btn");
+
+      button.addEventListener("click", function() {
+        alert("Vous avez choisi le plan : " + title);
+      });
+
+      return card;
+    }
+
+    const pricingContainer = document.getElementById("pricingContainer");
+
+    const basicCard = Card("Basic Plan", "$9.99 / month", [
+      "1 GB Storage",
+      "Basic Support",
+      "All Core Features"
+    ]);
+
+    const proCard = Card("Pro Plan", "$19.99 / month", [
+      "10 GB Storage",
+      "Priority Support",
+      "Advanced Features"
+    ]);
+
+    const premiumCard = Card("Premium Plan", "$29.99 / month", [
+      "Unlimited Storage",
+      "24/7 Support",
+      "All Premium Features"
+    ]);
+
+    pricingContainer.appendChild(basicCard);
+    pricingContainer.appendChild(proCard);
+    pricingContainer.appendChild(premiumCard);
+  </script>
+
+</body>
+</html>
