@@ -1,0 +1,5 @@
+Prompt IA utilisée dans Cursor :
+
+Corrige ce composant HTML/CSS de carte de prix.
+Identifie les erreurs de mise en page, corrige les fautes de syntaxe HTML/CSS, rends le bouton fonctionnel avec JavaScript, puis transforme la carte en composant réutilisable à partir d'une fonction Card(title, price, features).
+Le résultat doit utiliser uniquement HTML, CSS et JavaScript, sans framework.
